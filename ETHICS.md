@@ -1,12 +1,5 @@
-# Ethics And Privacy
+# Ethics And Public Scope
 
-This repository is safe for public use:
+This repository contains synthetic monitoring data only.
 
-- synthetic host names and metrics
-- no production logs or incident timelines
-- no Zabbix, Grafana, SMTP, webhook, or alerting credentials
-- no private IP addresses or customer names
-- no real DVR or camera identifiers
-
-It demonstrates monitoring design while preserving operational confidentiality.
-
+It does not expose production dashboards, hostnames, logs, customer identifiers, private IP addresses, alert destinations, tokens, SMTP/webhook secrets, or incident records. It demonstrates how operational health can be modeled without publishing confidential security data.

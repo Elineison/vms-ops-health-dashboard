@@ -1,2 +1,1 @@
-"""Portfolio-safe security operations monitoring demo."""
-
+"""Public-safe VMS operations health dashboard case study."""

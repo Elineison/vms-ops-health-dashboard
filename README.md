@@ -1,41 +1,48 @@
-# Security Ops Monitoring Demo
+# VMS Operations Health Dashboard
 
-Public portfolio demo for operational monitoring of video analytics systems.
+Public case study for operational health checks across video analytics modules.
 
-This project models how a production support team can observe distributed VMS services: worker health, frame freshness, inference latency, GPU pressure, active alerts, and service state.
+This repository models the support view I care about in real security operations: are the modules online, are cameras delivering fresh frames, is inference latency acceptable, is the alert channel healthy, and does a period without alerts mean quiet operation or a system issue?
+
+## Operational Problem
+
+A monitoring team cannot rely only on alerts. A system may be healthy and simply have no incidents, or it may be silent because a camera stalled, a worker stopped, or an alert channel failed. This dashboard separates business events from technical health.
 
 ## What This Demonstrates
 
-- FastAPI health API
-- Prometheus-style metrics output
-- issue classification for video analytics systems
-- synthetic worker probes
-- operational thinking from security electronics support
-- public-safe monitoring design
+- Health model for elevator dwell analytics, carona access monitoring, and sidewalk monitoring.
+- Camera freshness, inference latency, restart count, open event count, and alert-channel state.
+- Alert-silence check for cases like "no alert since Friday".
+- Prometheus-style `/metrics` endpoint for monitoring integrations.
+- Clean public-safe API payloads for support workflows.
+
+## Architecture
+
+```text
+module probes -> operations snapshot -> health decision
+             -> alert-silence review -> metrics endpoint
+```
 
 ## Run Locally
 
 ```bash
-python -m venv .venv
-. .venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8014
 ```
 
 Open:
 
-- `http://127.0.0.1:8000/api/health`
-- `http://127.0.0.1:8000/metrics`
-- `http://127.0.0.1:8000/api/workers`
+- `http://127.0.0.1:8014/`
+- `http://127.0.0.1:8014/api/operations/snapshot`
+- `http://127.0.0.1:8014/api/alerts/silence-check`
+- `http://127.0.0.1:8014/metrics`
 
-## Example
+## Public-Safe Scope
 
-```bash
-curl http://127.0.0.1:8000/api/health
-curl http://127.0.0.1:8000/metrics
-```
+All modules, counters, latencies, camera counts, and alert history values are synthetic. No customer data, private IPs, real logs, credentials, dashboards, alert destinations, or incident records are included.
 
-## Portfolio Note
+## Skills Represented
 
-All metrics are synthetic. This repository does not expose production monitoring configuration, hostnames, private IPs, customer identifiers, logs, or alert destinations.
-
+Python, FastAPI, observability, health checks, alerting logic, Prometheus-style metrics, VMS support workflows, and operational debugging.
