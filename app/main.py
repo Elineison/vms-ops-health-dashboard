@@ -7,9 +7,9 @@ from app.probes import PROBES, generated_at
 
 
 app = FastAPI(
-    title='VMS Operations Health Dashboard',
+    title='Painel de Saúde Operacional VMS',
     version='2.0.0',
-    description='Public case study for operational health checks across elevator, carona and sidewalk analytics modules.',
+    description='Estudo de caso público para health checks operacionais em módulos de elevador, carona e calçadas.',
 )
 
 
@@ -17,17 +17,17 @@ app = FastAPI(
 def index() -> str:
     return '''
     <main style="font-family:system-ui;max-width:920px;margin:40px auto;line-height:1.5">
-      <p style="text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#476582">public case study</p>
-      <h1>VMS Operations Health Dashboard</h1>
+      <p style="text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#476582">estudo de caso público</p>
+      <h1>Painel de Saúde Operacional VMS</h1>
       <p>
-        Sanitized observability service for video analytics operations: module health,
-        camera freshness, inference latency, alert-channel state and alert-silence checks.
-        Dahua/Intelbras is treated as one operational platform family across the modules.
+        Serviço sanitizado de observabilidade para operações de video analytics: saúde de módulos,
+        frescor de câmeras, latência de inferência, estado do canal de alerta e checagens de silêncio.
+        Dahua/Intelbras é tratado como uma única família operacional entre os módulos.
       </p>
       <ul>
-        <li><a href="/api/operations/snapshot">Operations snapshot</a></li>
-        <li><a href="/api/alerts/silence-check">Alert silence check</a></li>
-        <li><a href="/metrics">Prometheus-style metrics</a></li>
+        <li><a href="/api/operations/snapshot">Snapshot operacional</a></li>
+        <li><a href="/api/alerts/silence-check">Checagem de silêncio de alerta</a></li>
+        <li><a href="/metrics">Métricas estilo Prometheus</a></li>
       </ul>
     </main>
     '''
@@ -67,7 +67,7 @@ def alert_silence_check() -> dict:
         'service': 'vms-ops-health-dashboard',
         'generated_at': generated_at(),
         'checks': checks,
-        'operator_note': 'No alert since Friday is not treated as failure by itself; frame freshness, worker state and alert-channel state decide whether to probe further.',
+        'operator_note': 'Nenhum alerta desde sexta-feira não é tratado como falha por si só; frescor de frames, estado do worker e estado do canal de alerta definem se é preciso investigar.',
     }
 
 

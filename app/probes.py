@@ -37,16 +37,16 @@ class ModuleProbe:
     def alert_silence(self) -> dict:
         if self.last_event_hours_ago is None:
             status = 'no_history'
-            note = 'No synthetic event history is available for this module.'
+            note = 'Não há histórico sintético de eventos para este módulo.'
         elif self.last_event_hours_ago > 72 and self.state == 'online' and self.cameras_running == self.cameras_expected:
             status = 'quiet_but_healthy'
-            note = 'No recent event, but worker, cameras and alert channel are healthy.'
+            note = 'Sem evento recente, mas worker, câmeras e canal de alerta estão saudáveis.'
         elif self.last_event_hours_ago > 72:
             status = 'needs_probe'
-            note = 'No recent event and at least one runtime check needs attention.'
+            note = 'Sem evento recente e pelo menos uma checagem de runtime precisa de atenção.'
         else:
             status = 'recent_events'
-            note = 'Events were observed inside the expected review window.'
+            note = 'Eventos foram observados dentro da janela esperada de revisão.'
         return {
             'module': self.name,
             'domain': self.domain,

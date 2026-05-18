@@ -1,5 +1,5 @@
-# Ethics And Public Scope
+# Ética e Escopo Público
 
-This repository contains synthetic monitoring data only.
+Este repositório contém apenas dados sintéticos de monitoramento.
 
-It does not expose production dashboards, hostnames, logs, customer identifiers, private IP addresses, alert destinations, tokens, SMTP/webhook secrets, or incident records. It demonstrates how operational health can be modeled without publishing confidential security data.
+Ele não expõe dashboards de produção, hostnames, logs, identificadores de clientes, IPs privados, destinos de alerta, tokens, segredos de SMTP/webhook ou registros de incidentes. O objetivo é demonstrar como modelar saúde operacional sem publicar dados confidenciais de segurança.

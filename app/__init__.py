@@ -1,1 +1,1 @@
-"""Public-safe VMS operations health dashboard case study."""
+"""Estudo de caso público e sanitizado para saúde operacional VMS."""
