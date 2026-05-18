@@ -77,7 +77,7 @@ PROBES: List[ModuleProbe] = [
     ModuleProbe(
         name='elevator-analytics-a',
         domain='elevator_dwell',
-        platform_family='dahua-intelbras',
+        platform_family='hikvision',
         state='online',
         cameras_expected=18,
         cameras_running=18,
@@ -91,7 +91,7 @@ PROBES: List[ModuleProbe] = [
     ModuleProbe(
         name='carona-access-a',
         domain='access_carona',
-        platform_family='dahua-intelbras',
+        platform_family='intelbras',
         state='online',
         cameras_expected=6,
         cameras_running=6,
@@ -105,7 +105,7 @@ PROBES: List[ModuleProbe] = [
     ModuleProbe(
         name='sidewalk-monitoring-a',
         domain='sidewalk_dwell',
-        platform_family='dahua-intelbras',
+        platform_family='intelbras',
         state='online',
         cameras_expected=8,
         cameras_running=7,

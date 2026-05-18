@@ -16,7 +16,7 @@ VMS significa Sistema de Gerenciamento de Vídeo: a camada que centraliza câmer
 
 ## Contexto Representado
 
-- Servidores VMS com Hikvision e família Dahua/Intelbras.
+- Servidores VMS com Hikvision e Intelbras.
 - Workers de streaming em tempo real.
 - Módulos de detecção integrados à operação.
 - APIs de saúde para suporte e diagnóstico.
