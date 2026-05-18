@@ -1,6 +1,6 @@
 # VMS Operations Health Dashboard
 
-Public case study for operational health checks across video analytics modules.
+Public case study for operational health checks across video analytics modules in a Dahua/Intelbras operational platform family.
 
 This repository models the support view I care about in real security operations: are the modules online, are cameras delivering fresh frames, is inference latency acceptable, is the alert channel healthy, and does a period without alerts mean quiet operation or a system issue?
 
@@ -10,7 +10,7 @@ A monitoring team cannot rely only on alerts. A system may be healthy and simply
 
 ## What This Demonstrates
 
-- Health model for elevator dwell analytics, carona access monitoring, and sidewalk monitoring.
+- Health model for elevator dwell analytics, carona access monitoring, and sidewalk monitoring, treating Dahua/Intelbras as one platform family.
 - Camera freshness, inference latency, restart count, open event count, and alert-channel state.
 - Alert-silence check for cases like "no alert since Friday".
 - Prometheus-style `/metrics` endpoint for monitoring integrations.
@@ -41,7 +41,7 @@ Open:
 
 ## Public-Safe Scope
 
-All modules, counters, latencies, camera counts, and alert history values are synthetic. No customer data, private IPs, real logs, credentials, dashboards, alert destinations, or incident records are included.
+All modules, counters, latencies, camera counts, and alert history values are synthetic. No customer data, private IPs, real logs, credentials, dashboards, platform SDK files, alert destinations, or incident records are included.
 
 ## Skills Represented
 

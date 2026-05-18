@@ -22,6 +22,7 @@ def index() -> str:
       <p>
         Sanitized observability service for video analytics operations: module health,
         camera freshness, inference latency, alert-channel state and alert-silence checks.
+        Dahua/Intelbras is treated as one operational platform family across the modules.
       </p>
       <ul>
         <li><a href="/api/operations/snapshot">Operations snapshot</a></li>
@@ -87,7 +88,7 @@ def metrics() -> str:
         '# TYPE vms_module_online gauge',
     ]
     for probe in PROBES:
-        labels = f'module="{probe.name}",domain="{probe.domain}"'
+        labels = f'module="{probe.name}",domain="{probe.domain}",platform_family="{probe.platform_family}"'
         online = 1 if probe.state == 'online' else 0
         lines.append(f'vms_module_online{{{labels}}} {online}')
         lines.append(f'vms_cameras_running{{{labels}}} {probe.cameras_running}')

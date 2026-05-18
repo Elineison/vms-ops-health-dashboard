@@ -9,6 +9,7 @@ from typing import List
 class ModuleProbe:
     name: str
     domain: str
+    platform_family: str
     state: str
     cameras_expected: int
     cameras_running: int
@@ -58,6 +59,7 @@ class ModuleProbe:
         return {
             'name': self.name,
             'domain': self.domain,
+            'platform_family': self.platform_family,
             'state': self.state,
             'cameras_expected': self.cameras_expected,
             'cameras_running': self.cameras_running,
@@ -75,6 +77,7 @@ PROBES: List[ModuleProbe] = [
     ModuleProbe(
         name='elevator-analytics-a',
         domain='elevator_dwell',
+        platform_family='dahua-intelbras',
         state='online',
         cameras_expected=18,
         cameras_running=18,
@@ -88,6 +91,7 @@ PROBES: List[ModuleProbe] = [
     ModuleProbe(
         name='carona-access-a',
         domain='access_carona',
+        platform_family='dahua-intelbras',
         state='online',
         cameras_expected=6,
         cameras_running=6,
@@ -101,6 +105,7 @@ PROBES: List[ModuleProbe] = [
     ModuleProbe(
         name='sidewalk-monitoring-a',
         domain='sidewalk_dwell',
+        platform_family='dahua-intelbras',
         state='online',
         cameras_expected=8,
         cameras_running=7,
