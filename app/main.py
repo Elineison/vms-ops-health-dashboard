@@ -9,7 +9,7 @@ from app.probes import PROBES, generated_at
 app = FastAPI(
     title='Painel de Saúde Operacional VMS',
     version='2.0.0',
-    description='Módulo público para saúde operacional de servidores VMS, streams e detecções.',
+    description='Módulo público para saúde operacional de servidores VMS (Sistema de Gerenciamento de Vídeo), streams e detecções.',
 )
 
 
@@ -22,6 +22,7 @@ def index() -> str:
       <p>
         Módulo FastAPI para consolidar saúde de servidores, workers de stream, câmeras,
         módulos de detecção, métricas e silêncio de alerta em operações VMS.
+        VMS significa Sistema de Gerenciamento de Vídeo, a camada que centraliza câmeras, streams, eventos e alertas.
       </p>
       <ul>
         <li><a href="/api/operations/snapshot">Snapshot operacional</a></li>

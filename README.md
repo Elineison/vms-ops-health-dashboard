@@ -2,6 +2,10 @@
 
 Módulo FastAPI que representa a camada de saúde operacional para servidores VMS, workers de stream e módulos de detecção.
 
+## O Que Significa VMS Aqui
+
+VMS significa Sistema de Gerenciamento de Vídeo: a camada que centraliza câmeras, DVRs/NVRs, streams ao vivo, gravações, eventos, alertas e integrações. Neste repositório, o foco é acompanhar se essa base operacional e os módulos conectados continuam entregando vídeo, eventos, métricas e alertas corretamente.
+
 ## O Que o Sistema Faz
 
 - Consolida status de módulos de elevador, acesso carona e calçadas.
