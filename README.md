@@ -1,27 +1,30 @@
 # VMS Operations Health Dashboard
 
-Estudo de caso público para health checks operacionais em módulos de video analytics dentro de uma família operacional Dahua/Intelbras.
+Módulo FastAPI que representa a camada de saúde operacional para servidores VMS, workers de stream e módulos de detecção.
 
-Este repositório modela a visão de suporte que considero importante em operações reais de segurança: os módulos estão online, as câmeras estão entregando frames recentes, a latência de inferência está aceitável, o canal de alerta está saudável e um período sem alertas significa operação tranquila ou problema técnico?
+## O Que o Sistema Faz
 
-## Problema Operacional
+- Consolida status de módulos de elevador, acesso carona e calçadas.
+- Mostra câmeras esperadas, câmeras rodando, idade de frames, latência de inferência e restarts.
+- Identifica problemas como worker offline, câmera sem frame recente, inferência lenta e canal de alerta com falha.
+- Inclui checagem de silêncio de alerta para diferenciar ausência real de eventos de falha operacional.
+- Expõe métricas no formato Prometheus.
 
-Uma equipe de monitoramento não pode depender apenas de alertas. Um sistema pode estar saudável e simplesmente não ter incidentes, ou pode estar silencioso porque uma câmera travou, um worker parou ou um canal de alerta falhou. Este dashboard separa eventos operacionais de saúde técnica.
+## Contexto Representado
 
-## O Que Este Projeto Demonstra
+- Servidores VMS com Hikvision e família Dahua/Intelbras.
+- Workers de streaming em tempo real.
+- Módulos de detecção integrados à operação.
+- APIs de saúde para suporte e diagnóstico.
 
-- Modelo de saúde para analytics de elevador, monitoramento de acesso carona e monitoramento de calçadas, tratando Dahua/Intelbras como uma única família operacional.
-- Frescor de câmera, latência de inferência, contagem de restarts, eventos abertos e estado do canal de alerta.
-- Checagem de silêncio de alerta para cenários como "nenhum alerta desde sexta-feira".
-- Endpoint `/metrics` no estilo Prometheus para integrações de monitoramento.
-- Payloads de API limpos e seguros para fluxos de suporte.
+## Endpoints
 
-## Arquitetura
-
-```text
-probes de módulo -> snapshot operacional -> decisão de saúde
-                 -> revisão de silêncio de alerta -> endpoint de métricas
-```
+- `GET /` - página simples com links do módulo.
+- `GET /api/modules` - status individual dos módulos.
+- `GET /api/operations/snapshot` - visão consolidada da operação.
+- `GET /api/alerts/silence-check` - análise de silêncio de alerta.
+- `GET /api/health` - saúde geral.
+- `GET /metrics` - métricas estilo Prometheus.
 
 ## Rodar Localmente
 
@@ -32,17 +35,15 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8014
 ```
 
-Abra:
+## Testar
 
-- `http://127.0.0.1:8014/`
-- `http://127.0.0.1:8014/api/operations/snapshot`
-- `http://127.0.0.1:8014/api/alerts/silence-check`
-- `http://127.0.0.1:8014/metrics`
+```bash
+curl http://127.0.0.1:8014/api/modules
+curl http://127.0.0.1:8014/api/operations/snapshot
+curl http://127.0.0.1:8014/api/alerts/silence-check
+curl http://127.0.0.1:8014/metrics
+```
 
-## Escopo Público e Seguro
+## Escopo Público
 
-Todos os módulos, contadores, latências, quantidades de câmeras e históricos de alerta são sintéticos. Não há dados de clientes, IPs privados, logs reais, credenciais, dashboards internos, SDKs proprietários, destinos de alerta ou registros de incidentes.
-
-## Competências Representadas
-
-Python, FastAPI, observabilidade, health checks, lógica de alertas, métricas estilo Prometheus, fluxos de suporte VMS e debugging operacional.
+Todos os módulos, contadores, latências e históricos são sintéticos. Não há logs reais, IPs privados, credenciais, dashboards internos, SDKs proprietários, destinos de alerta ou dados de clientes.

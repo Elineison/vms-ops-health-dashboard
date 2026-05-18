@@ -9,7 +9,7 @@ from app.probes import PROBES, generated_at
 app = FastAPI(
     title='Painel de Saúde Operacional VMS',
     version='2.0.0',
-    description='Estudo de caso público para health checks operacionais em módulos de elevador, carona e calçadas.',
+    description='Módulo público para saúde operacional de servidores VMS, streams e detecções.',
 )
 
 
@@ -17,12 +17,11 @@ app = FastAPI(
 def index() -> str:
     return '''
     <main style="font-family:system-ui;max-width:920px;margin:40px auto;line-height:1.5">
-      <p style="text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#476582">estudo de caso público</p>
+      <p style="text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#476582">módulo público</p>
       <h1>Painel de Saúde Operacional VMS</h1>
       <p>
-        Serviço sanitizado de observabilidade para operações de video analytics: saúde de módulos,
-        frescor de câmeras, latência de inferência, estado do canal de alerta e checagens de silêncio.
-        Dahua/Intelbras é tratado como uma única família operacional entre os módulos.
+        Módulo FastAPI para consolidar saúde de servidores, workers de stream, câmeras,
+        módulos de detecção, métricas e silêncio de alerta em operações VMS.
       </p>
       <ul>
         <li><a href="/api/operations/snapshot">Snapshot operacional</a></li>
